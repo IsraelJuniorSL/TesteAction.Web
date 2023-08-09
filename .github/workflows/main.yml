@@ -30,7 +30,7 @@ jobs:
 
     - name: Copy DLLs to WebForms project
       run: |
-        cd ../
+        cd ../../
         dir
         cp TesteAction.Application/TesteAction.Application/TesteAction.Application/bin/Release/*.dll TesteAction.Web/TesteAction.Web/TesteAction.Web/bin/Release
 
