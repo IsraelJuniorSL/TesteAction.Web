@@ -24,6 +24,7 @@ jobs:
     - name: Build libraries
       run: |
         cd TesteAction.Application
+        dir
         nuget restore
         msbuild /p:Configuration=Release
       shell: cmd
@@ -32,7 +33,7 @@ jobs:
       run: |
         cd ../../
         dir
-        cp TesteAction.Application/TesteAction.Application/TesteAction.Application/bin/Release/*.dll TesteAction.Web/TesteAction.Web/bin/Release
+        cp TesteAction.Application/TesteAction.Application/bin/Release/*.dll TesteAction.Web/TesteAction.Web/bin/Release
 
     - name: Build WebForms application
       run: |
