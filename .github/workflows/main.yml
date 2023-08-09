@@ -28,7 +28,7 @@ jobs:
 
     - name: Copy DLLs to WebForms project
       run: |
-        cd ../
+        cd ../../
         cp TesteAction.Application/TesteAction.Application/bin/Release/*.dll TesteAction.Web/TesteAction.Web/bin/Release
 
     - name: Build WebForms application
