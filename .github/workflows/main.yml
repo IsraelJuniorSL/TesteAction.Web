@@ -14,7 +14,7 @@ jobs:
 
     - name: Clone class library repository
       run: |
-        cd ../../
+        cd D:/a
         git clone https://github.com/IsraelJuniorSL/TesteAction.Application.git
         dir
         
@@ -23,7 +23,7 @@ jobs:
       
     - name: Build libraries
       run: |
-        cd ../../TesteAction.Application
+        cd D:/a/TesteAction.Application
         dir
         nuget restore
         msbuild /p:Configuration=Release
@@ -31,12 +31,10 @@ jobs:
 
     - name: Copy DLLs to WebForms project
       run: |
-        cd ../../
-        dir
-        cp TesteAction.Application/TesteAction.Application/bin/Release/*.dll TesteAction.Web/TesteAction.Web/bin/Release
+        cp D:/a/TesteAction.Application/TesteAction.Application/bin/Release/*.dll D:/a/TesteAction.Web/TesteAction.Web/bin/Release
 
     - name: Build WebForms application
       run: |
-        cd ../../TesteAction.Web
+        cd   cd D:/a/TesteAction.Web
         msbuild /p:Configuration=Release
       shell: cmd
