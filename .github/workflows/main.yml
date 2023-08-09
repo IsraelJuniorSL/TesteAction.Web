@@ -16,17 +16,15 @@ jobs:
       run: |
         git clone https://github.com/IsraelJuniorSL/TesteAction.Application.git
         
-    - name: Install MSBuild
-      run: |
-        choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional --quiet --norestart"
-      shell: powershell
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1
       
     - name: Build libraries
       run: |
         cd TesteAction.Application
         nuget restore
-        |
-        "& 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe' /p:Configuration=Release
+        ls
+        msbuild /p:Configuration=Release
       shell: cmd
 
     - name: Copy DLLs to WebForms project
@@ -36,6 +34,6 @@ jobs:
 
     - name: Build WebForms application
       run: |
-        cd https://github.com/IsraelJuniorSL/TesteAction.Web
-        "& 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe' /p:Configuration=Release
+        cd TesteAction.Web
+        msbuild /p:Configuration=Release
       shell: cmd
