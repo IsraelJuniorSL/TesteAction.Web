@@ -23,7 +23,7 @@ jobs:
       
     - name: Build libraries
       run: |
-        cd TesteAction.Application
+        cd ../../TesteAction.Application
         dir
         nuget restore
         msbuild /p:Configuration=Release
@@ -37,6 +37,6 @@ jobs:
 
     - name: Build WebForms application
       run: |
-        cd TesteAction.Web
+        cd ../../TesteAction.Web
         msbuild /p:Configuration=Release
       shell: cmd
