@@ -16,6 +16,7 @@ jobs:
       run: |
         cd ../
         git clone https://github.com/IsraelJuniorSL/TesteAction.Application.git
+        ls
         
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
@@ -24,12 +25,12 @@ jobs:
       run: |
         cd TesteAction.Application
         nuget restore
-        
+        msbuild /p:Configuration=Release
       shell: cmd
 
     - name: Copy DLLs to WebForms project
       run: |
-        cd ../../
+        cd ../
         dir
         cp TesteAction.Application/TesteAction.Application/bin/Release/*.dll TesteAction.Web/TesteAction.Web/bin/Release
 
