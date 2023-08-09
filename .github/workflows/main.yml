@@ -14,6 +14,7 @@ jobs:
 
     - name: Clone class library repository
       run: |
+        cd ../
         git clone https://github.com/IsraelJuniorSL/TesteAction.Application.git
         
     - name: setup-msbuild
