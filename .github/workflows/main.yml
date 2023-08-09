@@ -16,6 +16,36 @@ jobs:
       run: |
         git clone https://github.com/IsraelJuniorSL/TesteAction.Application.git
 
+I apologize for the confusion. The msbuild command is not recognized in the default GitHub Actions environment, which doesn't come with the full Visual Studio toolset installed. To build .NET Framework projects like your WebForms application, you'll need to use a Windows environment with the appropriate tools.
+
+Here's an updated workflow that uses the windows-latest runner to build your projects. This workflow assumes you have set up the correct paths and repository structure as discussed previously:
+
+yaml
+Copy code
+name: Integrate Libraries
+
+on:
+  push:
+    branches:
+      - main  # Change this to the appropriate branch
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Clone class library repository
+      run: |
+        git clone https://github.com/your-username/ClassLibraryRepo.git
+        cd ClassLibraryRepo
+
+    - name: Install MSBuild
+      run: |
+        choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional --quiet --norestart"
+      shell: powershell
+      
     - name: Build libraries
       run: |
         cd TesteAction.Application
