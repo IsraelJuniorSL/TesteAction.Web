@@ -12,15 +12,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Clone class library repository
+      run: |
+        git clone https://github.com/IsraelJuniorSL/TesteAction.Application.git
+
     - name: Build libraries
       run: |
-        cd https://github.com/IsraelJuniorSL/TesteAction.Application
+        cd TesteAction.Application
         nuget restore
         msbuild /p:Configuration=Release
 
     - name: Copy DLLs to WebForms project
       run: |
-        cp https://github.com/IsraelJuniorSL/TesteAction.Application/bin/Release/*.dll https://github.com/IsraelJuniorSL/TesteAction.Web
+        cd ../
+        cp TesteAction.Application/bin/Release/*.dll TesteAction.Web/bin/Release
 
     - name: Build WebForms application
       run: |
