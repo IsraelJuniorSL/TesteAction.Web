@@ -37,5 +37,5 @@ jobs:
     - name: Build WebForms application
       run: |
         dir
-        msbuild D:/a/TesteAction.Web/TesteAction.Web/TesteAction.Web.csproj /p:Configuration=Release
+        msbuild D:/a/TesteAction.Web/TesteAction.Web/TesteAction.Web/TestAction.Web.csproj /p:Configuration=Release
       shell: cmd
