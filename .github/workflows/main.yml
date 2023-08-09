@@ -26,7 +26,7 @@ jobs:
         cd D:/a/TesteAction.Application
         dir
         nuget restore
-        msbuild /p:Configuration=Release
+        msbuild D:/a/TesteAction.Application/TesteAction.Application/TesteAction.Application.csproj /p:Configuration=Release
       shell: cmd
 
     - name: Copy DLLs to WebForms project
@@ -35,6 +35,5 @@ jobs:
 
     - name: Build WebForms application
       run: |
-        cd   cd D:/a/TesteAction.Web
-        msbuild /p:Configuration=Release
+        msbuild D:/a/TesteAction.Web/TesteAction.Web/TesteAction.Web.csproj /p:Configuration=Release
       shell: cmd
