@@ -6,6 +6,10 @@ on:
       - main  # Change this to the appropriate branch
     tags:
       - "v*.*.*"
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
